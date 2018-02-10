@@ -1,0 +1,7 @@
+
+SOUNDS = {};
+
+
+function newSound( name ){
+
+};
