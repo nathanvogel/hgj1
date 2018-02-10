@@ -9,22 +9,22 @@ window.App = function(c) {
 
 App.prototype = {
   setup: function() {
-    this.progressCircle = new Path.Circle({
-      center: view.center,
-      radius: 50,
-      fillColor: "#EE5555",
-      visible: true,
-      applyMatrix: false
-    });
-    anime({
-      targets: this.progressCircle.scaling,
-      x: 1.3,
-      y: 1.3,
-      direction: "alternate",
-      easing: "easeInOutSine",
-      loop: true,
-      duration: 500
-    });
+    // this.progressCircle = new Path.Circle({
+    //   center: view.center,
+    //   radius: 50,
+    //   fillColor: "#EE5555",
+    //   visible: true,
+    //   applyMatrix: false
+    // });
+    // anime({
+    //   targets: this.progressCircle.scaling,
+    //   x: 1.3,
+    //   y: 1.3,
+    //   direction: "alternate",
+    //   easing: "easeInOutSine",
+    //   loop: true,
+    //   duration: 500
+    // });
     this.player = new Player();
   },
 
@@ -32,7 +32,9 @@ App.prototype = {
     console.log("SVG loaded");
   },
 
-  onFrame: function() {},
+  onFrame: function() {
+    this.player.onFrame();
+  },
 
   onKeyUp: function(event) {
     this.player.onKeyUp(event);
@@ -60,10 +62,10 @@ App.prototype = {
 };
 
 //Paper.js event handlers
-tool.onFrame = function(event) {
+function onFrame(event) {
   if (typeof app === "undefined") return;
   app.onFrame();
-};
+}
 tool.onMouseDown = function(event) {
   if (typeof app === "undefined") return;
   app.onMouseDown(event);
