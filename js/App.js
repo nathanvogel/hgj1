@@ -1,5 +1,5 @@
 /* global paper Size Shape Point Path view */
-/* global App Player MyClass Road myApp */
+/* global App Player MyClass Road app */
 /* global anime */
 
 window.App = function(c) {
@@ -26,6 +26,7 @@ App.prototype = {
       loop: true,
       duration: 500
     });
+    this.player = new Player();
   },
 
   onSVGLoaded: function() {
@@ -40,6 +41,17 @@ App.prototype = {
   },
 
   onKeyUp: function(event) {
+    this.player.onKeyUp(event);
+    console.log(event);
+    switch (event.key) {
+      case "1":
+        break;
+      default:
+    }
+  },
+
+  onKeyDown: function(event) {
+    this.player.onKeyDown(event);
     console.log(event);
     switch (event.key) {
       case "1":
@@ -57,22 +69,24 @@ App.prototype = {
 
 //Paper.js event handlers
 function onFrame(event) {
-  if (typeof myApp === "undefined") return;
-  myApp.onFrame();
+  if (typeof app === "undefined") return;
+  app.onFrame();
 }
 function onMouseDown(event) {
-  if (typeof myApp === "undefined") return;
-  myApp.onMouseDown(event);
+  if (typeof app === "undefined") return;
+  app.onMouseDown(event);
 }
 function onMouseMove(event) {
-  if (typeof myApp === "undefined") return;
-  myApp.onMouseMove(event);
+  if (typeof app === "undefined") return;
+  app.onMouseMove(event);
 }
 function onKeyUp(event) {
-  if (typeof myApp === "undefined") return;
-  myApp.onKeyUp(event);
+  if (typeof app === "undefined") return;
+  app.onKeyUp(event);
+}
+function onKeyDown(event) {
+  if (typeof app === "undefined") return;
+  app.onKeyDown(event);
 }
 
 window.app = new App();
-
-console.log("App");
