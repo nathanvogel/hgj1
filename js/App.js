@@ -5,6 +5,8 @@
 window.App = function(c) {
   this.myObject = new MyClass();
   this.setup();
+  this.timer = new Timer();
+  this.enemies = new enemyGenerator({width : window.innerWidth, height: window.innerHeight, center : new Point(window.innerWidth/2, window.innerHeight/2)});
   this.enemies = new enemyGenerator({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -40,6 +42,7 @@ App.prototype = {
 
   onFrame: function() {
     this.enemies.step(this.player);
+    this.timer.step();
     this.player.onFrame();
   },
 
