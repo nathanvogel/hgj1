@@ -1,4 +1,4 @@
-/* global paper Size Shape Point Path view */
+/* global paper Size Shape Point Path view tool */
 /* global App Player MyClass Road app */
 /* global anime */
 
@@ -36,7 +36,6 @@ App.prototype = {
 
   onKeyUp: function(event) {
     this.player.onKeyUp(event);
-    console.log(event);
     switch (event.key) {
       case "1":
         break;
@@ -46,7 +45,6 @@ App.prototype = {
 
   onKeyDown: function(event) {
     this.player.onKeyDown(event);
-    console.log(event);
     switch (event.key) {
       case "1":
         break;
@@ -55,32 +53,32 @@ App.prototype = {
   },
 
   onMouseDown: function(event) {
-    // console.log("click");
+    console.log("click");
   },
 
   onMouseMove: function(event) {}
 };
 
 //Paper.js event handlers
-function onFrame(event) {
+tool.onFrame = function(event) {
   if (typeof app === "undefined") return;
   app.onFrame();
-}
-function onMouseDown(event) {
+};
+tool.onMouseDown = function(event) {
   if (typeof app === "undefined") return;
   app.onMouseDown(event);
-}
-function onMouseMove(event) {
+};
+tool.onMouseMove = function(event) {
   if (typeof app === "undefined") return;
   app.onMouseMove(event);
-}
-function onKeyUp(event) {
+};
+tool.onKeyUp = function(event) {
   if (typeof app === "undefined") return;
   app.onKeyUp(event);
-}
-function onKeyDown(event) {
+};
+tool.onKeyDown = function(event) {
   if (typeof app === "undefined") return;
   app.onKeyDown(event);
-}
+};
 
 window.app = new App();

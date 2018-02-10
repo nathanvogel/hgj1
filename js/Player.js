@@ -12,6 +12,7 @@ Player.prototype = {
   onKeyUp: function(event) {
     switch (event.key) {
       case "1":
+        console.log("p1");
         break;
       default:
     }
