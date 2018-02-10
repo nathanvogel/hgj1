@@ -42,11 +42,12 @@ Enemy.prototype = {
 
   collision: function(player_pos, player_r) {
     var d = player_pos - this.position;
+    if (d.length < 12 + this.current_radius) {
+      window.player.lose();
+    }
     if (d.length < player_r + this.current_radius) {
       console.log("BUM");
-      if (this.isLocked) {
-        window.player.lose();
-      } else {
+      if (!this.isLocked) {
         this.current_radius = d.length - player_r;
         if (this.current_radius <= 0) {
           this.current_radius = 0;
