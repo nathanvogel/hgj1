@@ -5,6 +5,7 @@
 window.App = function(c) {
   this.myObject = new MyClass();
   this.setup();
+  this.enemies = new enemyGenerator();
 };
 
 App.prototype = {
@@ -31,7 +32,12 @@ App.prototype = {
     console.log("SVG loaded");
   },
 
-  onFrame: function() {},
+  onFrame: function() {
+
+    this.enemies.step();
+
+
+  },
 
   onKeyUp: function(event) {
     console.log(event);
