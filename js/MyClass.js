@@ -2,17 +2,10 @@
 /* global App Player MyClass Road myApp levels */
 
 window.MyClass = function(levelName) {
-  this.svg;
+  this.myVar = 0;
+  console.log("init MyClass");
 };
 
 MyClass.prototype = {
-  loadLevel: function(levelData) {
-    // Load svg
-    this.levelData = levelData;
-    project.importSVG(this.levelData.filePath, this.onLevelLoaded.bind(this));
-  },
-
-  onLevelLoaded: function(svg) {
-    this.svg = svg;
-  }
+  myFunction: function(levelData) {}
 };
