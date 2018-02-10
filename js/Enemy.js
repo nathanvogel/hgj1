@@ -22,6 +22,7 @@ Enemy.prototype = {
     if (this.initial_life > 0) {
       this.initial_life -= 1;
       this.current_radius += 1;
+      console.log("recreate");
       this.body.remove();
       this.body = new Path.Circle({
         center: this.position,
@@ -35,6 +36,7 @@ Enemy.prototype = {
       console.log("LOCK");
       this.isLocked = true;
       this.currentColor = "red";
+      this.body.fillColor = this.currentColor;
     }
   },
 
@@ -44,7 +46,6 @@ Enemy.prototype = {
       console.log("BUM");
       if (this.isLocked) {
         window.player.lose();
-        return;
       } else {
         this.current_radius = d.length - player_r;
         if (this.current_radius <= 0) {

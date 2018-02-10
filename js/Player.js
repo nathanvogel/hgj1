@@ -26,7 +26,7 @@ Player.prototype = {
     if (Key.isDown("up")) acc += new Point(0, -1);
     if (Key.isDown("down")) acc += new Point(0, 1);
 
-    acc *= 0.3;
+    acc *= 0.42;
 
     if (this.inCollision) acc *= 0.4;
 
