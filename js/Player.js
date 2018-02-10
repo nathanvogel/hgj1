@@ -7,7 +7,7 @@ window.Player = function(levelName) {
   this.form = new Path.Circle({
     center: view.center,
     radius: 20,
-    fillColor: "#5555EE",
+    fillColor: "rgb(144, 37, 187)",
     visible: true
   });
   this.velocity = new Point(0, 0);

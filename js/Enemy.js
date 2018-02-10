@@ -3,7 +3,7 @@ window.Enemy = function(x, y) {
   this.initial_life = 50;
   this.dead = false;
   this.creation = new Date().getTime();
-  this.currentColor = "blue";
+  this.currentColor = "rgb(100, 100, 255)";
   this.isLocked = false;
 
   this.pulse_index = 0;
@@ -58,7 +58,7 @@ Enemy.prototype = {
     if (!this.isLocked && new Date().getTime() - this.creation > 10 * 1000) {
       console.log("LOCK");
       this.isLocked = true;
-      this.currentColor = "red";
+      this.currentColor = "rgb(255, 100, 100)";
       this.body.fillColor = this.currentColor;
     }
   },
