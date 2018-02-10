@@ -6,6 +6,11 @@ window.Enemy = function(x, y) {
   this.currentColor = "blue";
   this.isLocked = false;
 
+  this.pulse_index = 0;
+  this.pulse_quantity = 60;
+  this.pulse_speed = 1.2;
+  this.pulse = false;
+
   this.body = new Path.Circle({
     center: [x, y],
     radius: 0,
@@ -32,6 +37,24 @@ Enemy.prototype = {
         applyMatrix: false
       });
     }
+
+    if(this.pulse){
+      this.current_radius += (this.pulse_index >= this.pulse_quantity/2)? -this.pulse_speed : +this.pulse_speed;
+      this.pulse_index++;
+      if(this.pulse_index >= this.pulse_quantity) {
+        this.pulse = false;
+        this.pulse_index = 0;
+      }
+      this.body.remove();
+      this.body = new Path.Circle({
+        center: this.position,
+        radius: this.current_radius,
+        fillColor: this.currentColor,
+        visible: true,
+        applyMatrix: false
+      });
+    }
+
     if (!this.isLocked && new Date().getTime() - this.creation > 10 * 1000) {
       console.log("LOCK");
       this.isLocked = true;
@@ -64,5 +87,6 @@ Enemy.prototype = {
         applyMatrix: false
       });
     }
-  }
+  },
+
 };

@@ -28,8 +28,11 @@ enemyGenerator.prototype = {
 
     this.timer_time--;
     if (this.timer_time < 0) {
+      for (var k = 0; k < this.enemies.length; k++) {
+        if(this.enemies[k].isLocked) this.enemies[k].pulse = true;
+      }
       this.timer_time = this.timer_limit;
-      var times = Math.floor(Math.random() * (1 + 3)) + 3;
+      var times = Math.floor(Math.random() * (1 + 4)) + 4;
       for (var j = 0; j < times; j++) {
         this.generateEnemy(
           Math.random() * this.width,
