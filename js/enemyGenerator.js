@@ -7,7 +7,7 @@ window.enemyGenerator = function(attr) {
   this.timer_limit = 10 * 60;
   this.timer_time = this.timer_limit;
 
-  var times = Math.floor(Math.random() * (1 + 3)) + 3;
+  var times = Math.floor(Math.random() * (1 + 8)) + 8;
   for (var j = 0; j < times; j++) {
     this.generateEnemy(Math.random() * this.width, Math.random() * this.height);
   }
@@ -32,7 +32,7 @@ enemyGenerator.prototype = {
         if(this.enemies[k].isLocked) this.enemies[k].pulse = true;
       }
       this.timer_time = this.timer_limit;
-      var times = Math.floor(Math.random() * (1 + 4)) + 4;
+      var times = Math.floor(Math.random() * (1 + 8)) + 8;
       for (var j = 0; j < times; j++) {
         this.generateEnemy(
           Math.random() * this.width,
