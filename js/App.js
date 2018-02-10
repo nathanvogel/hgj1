@@ -5,7 +5,11 @@
 window.App = function(c) {
   this.myObject = new MyClass();
   this.setup();
-  this.enemies = new enemyGenerator({width : window.innerWidth, height: window.innerHeight, center : new Point(window.innerWidth/2, window.innerHeight/2)});
+  this.enemies = new enemyGenerator({
+    width: window.innerWidth,
+    height: window.innerHeight,
+    center: new Point(window.innerWidth / 2, window.innerHeight / 2)
+  });
 };
 
 App.prototype = {
@@ -27,6 +31,7 @@ App.prototype = {
     //   duration: 500
     // });
     this.player = new Player();
+    window.player = this.player;
   },
 
   onSVGLoaded: function() {

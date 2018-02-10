@@ -11,12 +11,15 @@ window.Player = function(levelName) {
     visible: true
   });
   this.velocity = new Point(0, 0);
+  this.inCollision = false;
+  this.lost = false;
 };
 
 Player.prototype = {
   myFunction: function(levelData) {},
 
   onFrame: function() {
+    if (this.lost) return;
     var acc = new Point(0, 0);
     if (Key.isDown("left")) acc += new Point(-1, 0);
     if (Key.isDown("right")) acc += new Point(1, 0);
@@ -25,9 +28,16 @@ Player.prototype = {
 
     acc *= 0.3;
 
+    if (this.inCollision) acc *= 0.4;
+
     this.velocity += acc;
     this.velocity *= 0.92;
     this.form.position += this.velocity;
+  },
+
+  lose: function() {
+    this.form.fillColor = "red";
+    this.lost = true;
   },
 
   onKeyUp: function(event) {
