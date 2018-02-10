@@ -26,6 +26,7 @@ Enemy.prototype = {
     if(this.initial_life > 0){
       this.initial_life -= 1;
       this.current_radius += 1;
+      this.body.remove();
       this.body = new Path.Circle({
         center: this.position,
         radius: this.current_radius,
@@ -40,11 +41,22 @@ Enemy.prototype = {
 
     var d = player_pos - this.position;
     if(d.length < player_r + this.current_radius){
+      console.log("BUM");
       this.current_radius = d.length - player_r;
       if(this.current_radius <= 0){
         this.current_radius = 0;
         this.dead = true;
       }
+
+      this.body.remove();
+      this.body = new Path.Circle({
+        center: this.position,
+        radius: this.current_radius,
+        fillColor: "red",
+        visible: true,
+        applyMatrix: false
+      });
+
     }
 
   },

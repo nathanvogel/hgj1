@@ -34,7 +34,7 @@ App.prototype = {
   },
 
   onFrame: function() {
-    this.enemies.step();
+    this.enemies.step(this.player);
     this.player.onFrame();
   },
 
