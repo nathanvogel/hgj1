@@ -31,7 +31,8 @@ Enemy.prototype = {
         applyMatrix: false
       });
     }
-    if (new Date().getTime() - this.creation > 10 * 1000) {
+    if (!this.isLocked && new Date().getTime() - this.creation > 10 * 1000) {
+      console.log("LOCK");
       this.isLocked = true;
       this.currentColor = "red";
     }
@@ -44,11 +45,12 @@ Enemy.prototype = {
       if (this.isLocked) {
         window.player.lose();
         return;
-      }
-      this.current_radius = d.length - player_r;
-      if (this.current_radius <= 0) {
-        this.current_radius = 0;
-        this.dead = true;
+      } else {
+        this.current_radius = d.length - player_r;
+        if (this.current_radius <= 0) {
+          this.current_radius = 0;
+          this.dead = true;
+        }
       }
 
       this.body.remove();
