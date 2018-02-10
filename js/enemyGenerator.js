@@ -10,8 +10,10 @@ window.enemyGenerator = function(attr){
   this.timer_limit = 10 * 60;
   this.timer_time = this.timer_limit;
 
-  this.generateEnemy(Math.random()*this.width, Math.random()*this.height);
-
+  var times = Math.floor(Math.random() * (1+3)) + 3;
+  for (var j = 0; j < times; j++) {
+    this.generateEnemy(Math.random()*this.width, Math.random()*this.height);
+  }
   console.log("init enemy gen");
 
 };

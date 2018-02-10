@@ -13,8 +13,9 @@ window.Timer = function(){
     fontSize: window.innerWidth/2
   });
 
-  this.text.position.x = window.innerWidth/2 - this.text.bounds.width/2;
-  this.text.position.y = window.innerHeight/2 - this.text.bounds.height/2;
+  this.text.bounds.center = view.bounds.center;
+  // this.text.position.x = window.innerWidth/2 - this.text.bounds.width/2;
+  // this.text.position.y = window.innerHeight/2 - this.text.bounds.height/2;
   this.text.sendToBack();
 
 
